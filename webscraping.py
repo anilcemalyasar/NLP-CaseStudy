@@ -51,11 +51,41 @@ def get_book_urls(driver, url, max_pagination):
 
     return book_urls
 
+def get_book_details(driver, url):
+    """
+
+    :param driver: WebDriver - Chrome
+    :param url: str
+    :return: list
+    """
+
+    driver.get(url)
+    time.sleep(SLEEP_TIME)
+
+    # Get main content div
+    content_div = driver.find_element(By.XPATH, "//div[@class='content']")
+
+    inner_html = content_div.get_attribute("innerHTML")
+    soup = BeautifulSoup(inner_html, "html.parser")
+
+    # Book Name
+    book_name_element = soup.find('h1')
+    book_name = book_name_element.text
+
+    # Book Price
+    book_price_element = soup.find('p', attrs={"class": "price_color"})
+    book_price = book_price_element.text
+
+    print(book_name)
+
 def main():
     driver = initialize_driver()
     page_count = find_page_count(driver, BASE_URL)
     book_urls = get_book_urls(driver, BASE_URL, page_count)
-    print(len(book_urls))
+
+    for book_url in book_urls:
+        get_book_details(driver, book_url)
+    # print(len(book_urls))
 
 if __name__ == "__main__":
     main()
