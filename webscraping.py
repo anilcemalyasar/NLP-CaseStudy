@@ -88,11 +88,23 @@ def get_book_details(driver, url):
     if desc_element:
         book_desc = desc_element.find_next_sibling().text
 
+    # Book Stock Status
+    book_stock_status_element = soup.find('p', attrs={"class": "instock availability"})
+    book_stock_status_text = book_stock_status_element.text.strip()
+    book_stock_status = True if "In Available" in book_stock_status_text else False
+
+    match = re.search(r'\((\d+) available\)', book_stock_status_text)
+    book_stock_amount = 0
+    if match:
+        book_stock_amount = int(match.group(1))
+
     json_obj = {
         "name": book_name,
         "price": book_price,
         "starRating": book_star,
-        "description": book_desc
+        "description": book_desc,
+        "stockStatus": book_stock_status,
+        "stockAmount": book_stock_amount
     }
 
     return json_obj

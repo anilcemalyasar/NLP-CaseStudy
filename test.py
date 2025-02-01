@@ -22,6 +22,17 @@ soup = BeautifulSoup(inner_html, "html.parser")
 # Ürün bilgilerini içeren tabloyu bul
 product_information_table = soup.find('table', class_="table table-striped")
 
+# Book Stock Status
+book_stock_status_element = soup.find('p', attrs={"class": "instock availability"})
+book_stock_status_text = book_stock_status_element.text.strip()
+book_stock_status = True if "In Available" in book_stock_status_text else False
+
+match = re.search(r'\((\d+) available\)', book_stock_status_text)
+book_stock_amount = 0
+if match:
+	book_stock_amount = int(match.group(1))
+	print(book_stock_amount)
+
 # Tablodaki tüm satırları al
 rows = product_information_table.find_all('tr')
 
