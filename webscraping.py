@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import time
 import re
 import numpy as np
+import json
 import pandas as pd
 
 # Set constant variables
@@ -56,7 +57,7 @@ def get_book_details(driver, url):
 
     :param driver: WebDriver - Chrome
     :param url: str
-    :return: list
+    :return: dict
     """
 
     driver.get(url)
@@ -76,15 +77,38 @@ def get_book_details(driver, url):
     book_price_element = soup.find('p', attrs={"class": "price_color"})
     book_price = book_price_element.text
 
-    print(book_name)
+    # Book Star Rating
+    star_rating_regex = re.compile("^star-rating ")
+    book_star_elem = soup.find("p", attrs={"class": star_rating_regex})
+    book_star = book_star_elem["class"][-1]
+
+    # Book Description
+    desc_element = soup.find('div', attrs={"id": "product_description"})
+    book_desc = np.nan
+    if desc_element:
+        book_desc = desc_element.find_next_sibling().text
+
+    json_obj = {
+        "name": book_name,
+        "price": book_price,
+        "starRating": book_star,
+        "description": book_desc
+    }
+
+    return json_obj
 
 def main():
     driver = initialize_driver()
     page_count = find_page_count(driver, BASE_URL)
     book_urls = get_book_urls(driver, BASE_URL, page_count)
 
+    book_details = []
     for book_url in book_urls:
-        get_book_details(driver, book_url)
+        book_details.append(get_book_details(driver, book_url))
+
+    with open("data.json", "w", encoding='utf-8') as f:
+        json.dump(book_details, f, ensure_ascii=False, indent=4)
+
     # print(len(book_urls))
 
 if __name__ == "__main__":
