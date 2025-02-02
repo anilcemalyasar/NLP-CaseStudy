@@ -90,7 +90,7 @@ data = [
 
 documents = [d["description"] for d in data]
 
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 # Create an instance of CountVectorizer
 vectorizer = CountVectorizer()
@@ -107,5 +107,17 @@ print(feature_names)
 # Print the document-term matrix
 # print(X.toarray())
 
+vectorizer = TfidfVectorizer(stop_words="english")
+X = vectorizer.fit_transform(documents)
+
+print(X.shape)  # (örnek sayısı, kelime sayısı)
+
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Cosine similarity matrisini hesapla
+similarity_matrix = cosine_similarity(X)
+
+# Benzerlik matrisini görüntüle
+print(similarity_matrix)
 
 
