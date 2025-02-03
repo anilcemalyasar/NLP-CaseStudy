@@ -91,7 +91,7 @@ def get_book_details(driver, url):
     # Book Stock Status
     book_stock_status_element = soup.find('p', attrs={"class": "instock availability"})
     book_stock_status_text = book_stock_status_element.text.strip()
-    book_stock_status = True if "In Available" in book_stock_status_text else False
+    book_stock_status = True if "In stock" in book_stock_status_text else False
 
     match = re.search(r'\((\d+) available\)', book_stock_status_text)
     book_stock_amount = 0
