@@ -27,6 +27,29 @@ pip install numpy pandas scikit-learn sentence-transformers
 
 ## 📌 Kurulum & Çalıştırma
 
+
+
+## 🛠 Kullanılan Teknolojiler & Bağımlılıklar
+
+Aşağıdaki Python kütüphaneleri gereklidir:
+
+```bash
+pip install numpy pandas scikit-learn sentence-transformers selenium beautifulsoup4 torch transformers
+```
+
+- `numpy`: Sayısal işlemler için
+- `pandas`: Veri işleme ve analizi için
+- `scikit-learn`: TF-IDF, CountVectorizer ve Cosine Similarity hesaplamaları için
+- `sentence-transformers`: BERT modeli ile metin embedding'leri oluşturmak için
+- `selenium`: Web scraping için
+- `beautifulsoup4`: HTML verisini ayrıştırmak için
+- `torch`: PyTorch tabanlı BERT modelleri için
+- `transformers`: Hugging Face Transformer modelleri için
+
+---
+
+## 📌 Kurulum & Çalıştırma
+### 🔹 **Yöntem 1: Git reposunu lokalinize klonlayın**
 1️⃣ **Projeyi klonlayın:**
 ```bash
 git clone https://github.com/anilcemalyasar/NLP-CaseStudy.git
@@ -50,6 +73,45 @@ book_similarity_results.json
 
 ---
 
+### 🔹 **Yöntem 2: Anaconda ile Virtual Environment Kullanarak**
+
+1️⃣ **Anaconda ile yeni bir sanal ortam oluşturun:**
+```bash
+conda create --name nlp_env python=3.9
+conda activate nlp_env
+```
+
+2️⃣ **Gerekli bağımlılıkları yükleyin:**
+```bash
+pip install -r requirements.txt
+```
+
+3️⃣ **Kodunuzu çalıştırın:**
+```bash
+python main.py
+```
+
+4️⃣ **Sonuçlar JSON formatında kaydedilir:**
+```bash
+book_similarity_results.json
+```
+
+### 🔹 **Yöntem 3: PyCharm Üzerinden Virtual Environment Kullanarak**
+
+1️⃣ **PyCharm'de yeni bir proje oluşturun ve Virtual Environment seçin.**
+
+2️⃣ **Terminale şu komutları girerek bağımlılıkları yükleyin:**
+```bash
+pip install -r requirements.txt
+```
+
+3️⃣ **`main.py` dosyasını çalıştırarak projeyi başlatın.**
+
+4️⃣ **Sonuçlar JSON dosyasında kaydedilecektir.**
+
+---
+
+
 ## 📊 Örnek Çıktı Formatı
 
 JSON dosyası şu formatta olacaktır:
@@ -68,9 +130,9 @@ JSON dosyası şu formatta olacaktır:
 
 ## 🖼 Örnek Ekran Görüntüleri
 
-📌 **Benzerlik Analizi Çalıştırma**
+📌 **Web Kazıma ile elde ettiğimiz kitap verileri JSON formatında**
 
-![Benzerlik Analizi](path/to/screenshot.png)
+![JSON Kitap Çıktı](D:\NLP-CaseStudy-Patika\images\books.png)
 
 📌 **Oluşturulan JSON Çıktısı**
 
@@ -78,9 +140,20 @@ JSON dosyası şu formatta olacaktır:
 
 ---
 
-## ✨ Katkıda Bulunma
-Eğer projeye katkı sağlamak istiyorsanız, **pull request** gönderebilir veya `issue` açabilirsiniz.
 
----
+
+## 📊 Örnek Çıktı Formatı
+
+JSON dosyası şu formatta olacaktır:
+```json
+[
+  {
+    "name": "Kitap 1",
+    "tfidf_top5_similar": ["Kitap 2", "Kitap 3", "Kitap 4", "Kitap 5", "Kitap 6"],
+    "bow_top5_similar": ["Kitap 7", "Kitap 8", "Kitap 9", "Kitap 10", "Kitap 11"],
+    "bert_top5_similar": ["Kitap 12", "Kitap 13", "Kitap 14", "Kitap 15", "Kitap 16"]
+  }
+]
+```
 
 
