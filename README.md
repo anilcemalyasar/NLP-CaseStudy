@@ -10,24 +10,7 @@ Bu proje, bir kitap koleksiyonunun açıklamalarını analiz eder ve **TF-IDF, C
 
 ---
 
-## 🛠 Kullanılan Teknolojiler & Bağımlılıklar
-
-Aşağıdaki Python kütüphaneleri gereklidir:
-
-```bash
-pip install numpy pandas scikit-learn sentence-transformers
-```
-
-- `numpy`: Sayısal işlemler için
-- `pandas`: Veri işleme ve analizi için
-- `scikit-learn`: TF-IDF, CountVectorizer ve Cosine Similarity hesaplamaları için
-- `sentence-transformers`: BERT modeli ile metin embedding'leri oluşturmak için
-
----
-
 ## 📌 Kurulum & Çalıştırma
-
-
 
 ## 🛠 Kullanılan Teknolojiler & Bağımlılıklar
 
@@ -132,11 +115,11 @@ JSON dosyası şu formatta olacaktır:
 
 📌 **Web Kazıma ile elde ettiğimiz kitap verileri JSON formatında**
 
-![JSON Kitap Çıktı](D:\NLP-CaseStudy-Patika\images\books.png)
+![JSON Kitap Çıktı](https://github.com/anilcemalyasar/NLP-CaseStudy/blob/main/images/books.png)
 
 📌 **Oluşturulan JSON Çıktısı**
 
-![JSON Çıktı](D:\NLP-CaseStudy-Patika\images\similarities.png)
+![JSON Çıktı](https://github.com/anilcemalyasar/NLP-CaseStudy/blob/main/images/similarities.png)
 
 ---
 
@@ -155,5 +138,19 @@ JSON dosyası şu formatta olacaktır:
   }
 ]
 ```
+
+## 🌐 Web Scraping ile Veri Kazıma
+Bu proje ayrıca **Selenium ve BeautifulSoup** kullanarak kitap verilerini otomatik olarak kazımaktadır.
+
+1️⃣ **Web Scraping kodunu çalıştırmak için:**
+```bash
+python webscraping.py
+```
+
+2️⃣ **Veriler `data.json` dosyasına kaydedilecektir.**
+
+📌 **Demo Video:** [Web Scraping ile Veri Kazıma (YouTube)](YOUTUBE_VIDEO_LINK)
+
+---
 
 
