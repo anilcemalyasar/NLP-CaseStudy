@@ -22,9 +22,17 @@ def initialize_driver():
 
 def find_page_count(driver, url):
 
+    """
+    finds page count to navigate around pages through dynamic url
+    :param driver: WebDriver - Chrome
+    :param url: str
+    :return: int
+    """
+
     driver.get(url)
     # Sayfa yüklenmesini bekleyelim
     try:
+        # Class'ı current olan liste elemanını bulana kadar 5 saniye bekliyor
         page_info_element = WebDriverWait(driver, 5).until(
             EC.presence_of_element_located((By.XPATH, "//li[@class='current']"))
         )
@@ -36,6 +44,13 @@ def find_page_count(driver, url):
         return None
 
 def get_book_urls(driver, url, max_pagination):
+    """
+    Navigate around all pages and get book urls from their href attribute and keep them in a list
+    :param driver: WebDriver - Chrome
+    :param url: str
+    :param max_pagination: int
+    :return: list
+    """
     book_elements_xpath = "//div[@class = 'image_container']//a"
     book_urls = []
 
@@ -54,7 +69,7 @@ def get_book_urls(driver, url, max_pagination):
 
 def get_book_details(driver, url):
     """
-
+    Get book details and store them in a dictionary(key-value pairs) to transform into JSON data easily
     :param driver: WebDriver - Chrome
     :param url: str
     :return: dict
@@ -110,6 +125,10 @@ def get_book_details(driver, url):
     return json_obj
 
 def main():
+    """
+    Main pipeline
+    :return: None
+    """
     driver = initialize_driver()
     page_count = find_page_count(driver, BASE_URL)
     book_urls = get_book_urls(driver, BASE_URL, page_count)

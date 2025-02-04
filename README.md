@@ -149,7 +149,11 @@ python webscraping.py
 
 2️⃣ **Veriler `data.json` dosyasına kaydedilecektir.**
 
-📌 **Demo Video:** [Web Scraping ile Veri Kazıma (YouTube)](YOUTUBE_VIDEO_LINK)
+📌 **Web Scraping Programı Code Review:** 
+[![Program Code Review Videosu](https://img.youtube.com/vi/SnkLLX9otmU/0.jpg)](https://www.youtube.com/watch?v=SnkLLX9otmU)
+
+📌 **Web Scraping Demo:** 
+[![Program Demo Videosu](https://img.youtube.com/vi/1_EsNFBOYpQ/0.jpg)](https://www.youtube.com/watch?v=1_EsNFBOYpQ)
 
 ---
 
